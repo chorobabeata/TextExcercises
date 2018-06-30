@@ -86,6 +86,9 @@ namespace TextExcercises.ViewModels
                 case ExcerciseTypes.Vowels:
                     SelectedExcercise.Output = CountVowels(input).ToString();
                     break;
+                case ExcerciseTypes.Palindrome:
+                    SelectedExcercise.Output = CheckIfPalindrome(input).ToString();
+                    break;
             }
         }
 
@@ -112,6 +115,18 @@ namespace TextExcercises.ViewModels
                 }
             }
             return output;
+        }
+
+        private bool CheckIfPalindrome(string input)
+        {
+            for (int i = 0; i<input.Length; i++)
+            {
+                if (input[i]!=input[input.Length-1-i])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

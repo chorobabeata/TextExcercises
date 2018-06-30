@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/TextExcercises/packages
+/TextExcercises/.vs/TextExcercises/v15/Server/sqlite3
