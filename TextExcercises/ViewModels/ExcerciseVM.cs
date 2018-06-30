@@ -64,27 +64,54 @@ namespace TextExcercises.ViewModels
         {
             get
             {
-                return new DelegateCommand(ProcessData);
+                return new DelegateCommand(ProcessData, CanProcessData).ObservesProperty(() => SelectedExcercise); ;
             }
+        }
+
+        private bool CanProcessData()
+        {
+            return SelectedExcercise != null;
         }
 
         private void ProcessData()
         {
-            if (SelectedExcercise.Type == ExcerciseTypes.Reverse)
+            string input = string.IsNullOrEmpty(SelectedExcercise.Input) ? "" : SelectedExcercise.Input;
+            switch (SelectedExcercise.Type)
             {
-                SelectedExcercise.Output = ReverseString(SelectedExcercise.Input);
+                case ExcerciseTypes.Reverse:
+                    SelectedExcercise.Output = ReverseString(input);
+                    break;
+                case ExcerciseTypes.PigLatin:
+                    break;
+                case ExcerciseTypes.Vowels:
+                    SelectedExcercise.Output = CountVowels(input).ToString();
+                    break;
             }
         }
 
         private string ReverseString(string input)
         {
             string output = "";
-            input = string.IsNullOrEmpty(input) ? "" : input;
             for (int i = input.Length-1; i >=0; i--)
             {
                 output += input[i];
             }
                 return output;
+        }
+
+        private readonly List<char> _vowels = new List<char> { 'a', 'e', 'o', 'u', 'i', 'y' };
+
+        private int CountVowels(string input)
+        {
+            int output = 0;
+            foreach (char c in input)
+            {
+                if (_vowels.Contains(c))
+                {
+                    output++;
+                }
+            }
+            return output;
         }
     }
 }

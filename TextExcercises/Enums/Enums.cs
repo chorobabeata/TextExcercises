@@ -9,6 +9,7 @@ namespace TextExcercises.Enums
     public enum ExcerciseTypes
     {
         Reverse,
-        PigLatin
+        PigLatin,
+        Vowels
     }
 }
