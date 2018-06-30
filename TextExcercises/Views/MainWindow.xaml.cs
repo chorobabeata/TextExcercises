@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TextExcercises.ViewModels;
 
 namespace TextExcercises
 {
@@ -22,6 +23,7 @@ namespace TextExcercises
     {
         public MainWindow()
         {
+            DataContext = new ExcerciseVM();
             InitializeComponent();
         }
     }
